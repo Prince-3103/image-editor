@@ -6,20 +6,26 @@
     <title>Image Editor</title>
     <link rel="stylesheet" href="theme.css">
     <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css" rel="stylesheet"/>
 </head>
 <body>
     <main>
         <section>
             <div class="left">
                 <div class="top">
-                    <label for="img-input">
+                    <label for="img-input" class="btn">
                         Choose Image
                         <input type="file" id="img-input" accept="Image/*" hidden>
                     </label>
-                    <button class="btn">Reset</button>
-                    <button class="btn">Download</button>
+                    <button class="btn" id="reset-btn">Reset</button>
+                    <button class="btn" id="download-btn">Download</button>
                 </div>
-                <div class="bottom"></div>
+                <div class="bottom">
+                    <div class="placeholder">
+                        <i class="ri-file-image-line"></i>
+                        <p>No image chosen</p>
+                    </div>
+                </div>
             </div>
             <div class="right"></div>
         </section>

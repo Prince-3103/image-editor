@@ -6,12 +6,13 @@
 
 html, body{
     width: 100%;
-    color: aliceblue;
 }
 
 html{
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     background-color: var(--bg-primary-color);
+    color: var(--text-primary-color);
+
 }
 
 main{
@@ -28,11 +29,54 @@ main section{
     border: none;
     outline: none;
     border-radius: var(--border-radius-m);
-    background-color: #fff;
+    background-color: var(--bg-active-color);
+    cursor: pointer;
+    color: var(--text-active-color);
+}
+#reset-btn{
+    background-color: var(--bg-danger-color);
+    color: var(--text-primary-color);
+}
+#download-btn{
+    background-color: var(--bg-success-color);
+    color: var(--text-primary-color);
 }
 
 main section .top{
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: var(--gutter-m)
+}
+main section .left{
+    display: flex;
+    flex-direction: column;
+    gap: var(--gutter-l);
+    width: 70%;
+}
+main section .right{
+    width: 30%;
+}
+main section .bottom{
+    background-color: var(--bg-secondary-color);
+    width: 100%;
+    padding: var(--padding-2xl);
+    aspect-ratio: 5/3;
+    border-radius: var(--border-radius-xl);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+main section .bottom .placeholder{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    opacity: 0.6;
+    gap: var(--gutter-m);
+}
+main section .bottom .placeholder i{
+    font-size: 10rem;
+}
+main section .bottom .placeholder p{
+    font-size: var(--font-size-l);
 }
