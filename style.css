@@ -122,4 +122,5 @@ main section .right .filter input::-webkit-slider-runnable-track{
 canvas{
     max-width: 90%;
     max-height: 80vh;
+    display: none;
 }
