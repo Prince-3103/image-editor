@@ -57,9 +57,10 @@ let filters = {
 
 const filtersContainer = document.querySelector(".filters");
 const imageCanvas = document.querySelector("#image-canvas");
-const imgInput = document.querySelector("#img-input")
+const imgInput = document.querySelector("#img-input");
 const canvasCtx = imageCanvas.getContext("2d");
 const resetImage = document.querySelector("#reset-btn");
+const downloadImage = document.querySelector("#download-btn");
 
 let file = null;
 let image = null;
@@ -195,5 +196,12 @@ resetImage.addEventListener("click", ()=>{
     applyFilter();
     filtersContainer.innerHTML = "";
     showFilterElement()
+});
+
+downloadImage.addEventListener("click", () => {
+    const link = document.createElement("a");
+    link.download = "edited-image.png";
+    link.href = imageCanvas.toDataURL();
+    link.click();
 })
 
