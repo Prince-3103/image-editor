@@ -118,3 +118,8 @@ main section .right .filter input::-webkit-slider-runnable-track{
     height: 3px;
     border-radius: 2px;
 }
+
+canvas{
+    max-width: 600px;
+    max-height: 800px;
+}
