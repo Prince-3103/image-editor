@@ -120,6 +120,6 @@ main section .right .filter input::-webkit-slider-runnable-track{
 }
 
 canvas{
-    max-width: 600px;
-    max-height: 800px;
+    max-width: 90%;
+    max-height: 80vh;
 }
