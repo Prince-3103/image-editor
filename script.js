@@ -61,8 +61,8 @@ const imgInput = document.querySelector("#img-input");
 const canvasCtx = imageCanvas.getContext("2d");
 const resetImage = document.querySelector("#reset-btn");
 const downloadImage = document.querySelector("#download-btn");
+const presetsContainer = document.querySelector(".presets");
 
-let file = null;
 let image = null;
 
 function createFilterElement(name, unit="%", value, min, max){
@@ -100,7 +100,7 @@ function showFilterElement(){
 showFilterElement();
 
 imgInput.addEventListener("change", (event)=>{
-    file = event.target.files[0];
+    const file = event.target.files[0];
     const imgPlaceholder = document.querySelector(".placeholder");
     imageCanvas.style.display = "block"
     imgPlaceholder.style.display = "none"
@@ -134,6 +134,7 @@ function applyFilter(){
     `
 
     canvasCtx.drawImage(image, 0, 0);
+    canvasCtx.filter = "none";
 }
 
 resetImage.addEventListener("click", ()=>{
@@ -205,3 +206,203 @@ downloadImage.addEventListener("click", () => {
     link.click();
 })
 
+
+const presets = {
+    normal: {
+        brightness: 100,
+        contrast: 100,
+        saturation: 100,
+        hueRotate: 0,
+        blur: 0,
+        grayscale: 0,
+        sepia: 0,
+        opacity: 100,
+        invert: 0
+    },
+
+    vintage: {
+        brightness: 105,
+        contrast: 90,
+        saturation: 85,
+        hueRotate: 5,
+        blur: 0,
+        grayscale: 10,
+        sepia: 35,
+        opacity: 100,
+        invert: 0
+    },
+
+    oldSchool: {
+        brightness: 95,
+        contrast: 120,
+        saturation: 70,
+        hueRotate: 0,
+        blur: 0,
+        grayscale: 25,
+        sepia: 60,
+        opacity: 100,
+        invert: 0
+    },
+
+    drama: {
+        brightness: 90,
+        contrast: 165,
+        saturation: 125,
+        hueRotate: 0,
+        blur: 0,
+        grayscale: 0,
+        sepia: 0,
+        opacity: 100,
+        invert: 0
+    },
+
+    noir: {
+        brightness: 100,
+        contrast: 170,
+        saturation: 0,
+        hueRotate: 0,
+        blur: 0,
+        grayscale: 100,
+        sepia: 0,
+        opacity: 100,
+        invert: 0
+    },
+
+    warm: {
+        brightness: 110,
+        contrast: 105,
+        saturation: 120,
+        hueRotate: 350,
+        blur: 0,
+        grayscale: 0,
+        sepia: 20,
+        opacity: 100,
+        invert: 0
+    },
+
+    cool: {
+        brightness: 100,
+        contrast: 105,
+        saturation: 115,
+        hueRotate: 20,
+        blur: 0,
+        grayscale: 0,
+        sepia: 0,
+        opacity: 100,
+        invert: 0
+    },
+
+    faded: {
+        brightness: 110,
+        contrast: 75,
+        saturation: 80,
+        hueRotate: 0,
+        blur: 1,
+        grayscale: 5,
+        sepia: 15,
+        opacity: 100,
+        invert: 0
+    },
+
+    vivid: {
+        brightness: 105,
+        contrast: 130,
+        saturation: 170,
+        hueRotate: 0,
+        blur: 0,
+        grayscale: 0,
+        sepia: 0,
+        opacity: 100,
+        invert: 0
+    },
+
+    dreamy: {
+        brightness: 110,
+        contrast: 90,
+        saturation: 110,
+        hueRotate: 0,
+        blur: 3,
+        grayscale: 0,
+        sepia: 10,
+        opacity: 100,
+        invert: 0
+    },
+
+    cyberpunk: {
+        brightness: 105,
+        contrast: 150,
+        saturation: 180,
+        hueRotate: 290,
+        blur: 0,
+        grayscale: 0,
+        sepia: 0,
+        opacity: 100,
+        invert: 0
+    },
+
+    coolBlue: {
+        brightness: 100,
+        contrast: 120,
+        saturation: 130,
+        hueRotate: 30,
+        blur: 0,
+        grayscale: 0,
+        sepia: 0,
+        opacity: 100,
+        invert: 0
+    },
+
+    retro: {
+        brightness: 105,
+        contrast: 95,
+        saturation: 90,
+        hueRotate: 8,
+        blur: 0,
+        grayscale: 8,
+        sepia: 45,
+        opacity: 100,
+        invert: 0
+    },
+
+    soft: {
+        brightness: 108,
+        contrast: 85,
+        saturation: 95,
+        hueRotate: 0,
+        blur: 2,
+        grayscale: 0,
+        sepia: 5,
+        opacity: 100,
+        invert: 0
+    },
+
+    spooky: {
+        brightness: 80,
+        contrast: 160,
+        saturation: 60,
+        hueRotate: 140,
+        blur: 1,
+        grayscale: 20,
+        sepia: 10,
+        opacity: 100,
+        invert: 0
+    }
+};
+
+Object.keys(presets).forEach(presetName =>{
+    const presetButton = document.createElement("button")
+    presetButton.classList.add("btn");
+    presetButton.innerText = presetName;
+    presetsContainer.appendChild(presetButton)
+
+    presetButton.addEventListener("click", () =>{
+        if(!image)   return;
+        const preset = presets[presetName];
+        Object.keys(preset).forEach(filterName =>{
+            filters[filterName].value = preset[filterName];
+        })
+        applyFilter();
+        filtersContainer.innerHTML = "";
+        showFilterElement();
+    })
+})
