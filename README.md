@@ -6,7 +6,6 @@ A simple and responsive image editor built with **HTML**, **CSS**, and **Vanilla
 
 ## ✨ Features
 
-- 📂 Upload images from your device
 - 🎛️ Adjust image filters using sliders
   - Brightness
   - Contrast
